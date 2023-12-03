@@ -10,6 +10,7 @@ public class GameNumber {
     public GameNumber(List<Integer> numbers) {
         validateRange(numbers);
         validateDuplicate(numbers);
+        validateSize(numbers);
         this.numbers = numbers;
     }
 
@@ -25,6 +26,12 @@ public class GameNumber {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if(distinctNumbers.size() != numbers.size()){
             throw new IllegalArgumentException("숫자는 서로 다른 수로 이루어져야 합니다.");
+        }
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if(numbers.size() != 3){
+            throw new IllegalArgumentException("숫자의 개수는 3개로 이루어져야 합니다.");
         }
     }
 }

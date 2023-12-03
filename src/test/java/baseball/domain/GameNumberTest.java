@@ -27,6 +27,15 @@ class GameNumberTest {
 
     }
 
+    @Test
+    @DisplayName("숫자의 개수가 3개가 아니라면 예외가 발생한다.")
+    void validateSize() {
+        assertThatThrownBy(() -> new GameNumber(List.of(1, 2, 3, 4)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자의 개수는 3개로 이루어져야 합니다.");
+
+    }
+
 
 
 }
