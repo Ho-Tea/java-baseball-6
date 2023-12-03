@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class GameNumber {
     private final List<Integer> numbers;
@@ -11,7 +9,7 @@ public class GameNumber {
         validateRange(numbers);
         validateDuplicate(numbers);
         validateSize(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validateRange(List<Integer> numbers) {
@@ -33,5 +31,18 @@ public class GameNumber {
         if(numbers.size() != 3){
             throw new IllegalArgumentException("숫자의 개수는 3개로 이루어져야 합니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameNumber that = (GameNumber) o;
+        return Objects.equals(numbers, that.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }
