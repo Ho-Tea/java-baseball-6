@@ -18,4 +18,15 @@ class GameNumberTest {
 
     }
 
+    @Test
+    @DisplayName("중복된 숫자가 존재하면 예외가 발생한다.")
+    void validateDuplicate() {
+        assertThatThrownBy(() -> new GameNumber(List.of(2, 2, 3)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자는 서로 다른 수로 이루어져야 합니다.");
+
+    }
+
+
+
 }
