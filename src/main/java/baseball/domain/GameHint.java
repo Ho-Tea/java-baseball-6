@@ -1,16 +1,24 @@
 package baseball.domain;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 public enum GameHint {
-    STRIKE("스트라이크", "%d"),
-    BALL("볼", "%d"),
-    NOTHING("낫싱", "");
+    STRIKE("스트라이크"),
+    BALL("볼"),
+    NOTHING("낫싱");
 
     private String korean;
-    private String count;
 
 
-    GameHint(String korean, String count) {
+    GameHint(String korean) {
         this.korean = korean;
-        this.count = count;
+    }
+
+    public static Map<GameHint, Integer> of(int strikeCount, int ballCount){
+        if(strikeCount == 0 && ballCount == 0){
+            return new EnumMap<>(Map.of(NOTHING, 0));
+        }
+        return new EnumMap<>(Map.of(BALL, ballCount, STRIKE, strikeCount));
     }
 }
