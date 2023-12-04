@@ -60,6 +60,13 @@ class BaseballNumberTest {
         assertThat(computerNumber.matchCount(userNumber)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @MethodSource("containsData")
+    @DisplayName("다른 숫자와 비교해 같은 수가 몇개 있는지 알 수 있다.")
+    void containsCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected){
+        assertThat(computerNumber.containsCount(userNumber)).isEqualTo(expected);
+    }
+
     static Stream<Arguments> matchData() {
         BaseballNumber computerNumber = new BaseballNumber(List.of(4, 2, 3));
         return Stream.of(
@@ -67,6 +74,16 @@ class BaseballNumberTest {
                 Arguments.of(computerNumber, new BaseballNumber(List.of(1, 2, 3)), 2),
                 Arguments.of(computerNumber, new BaseballNumber(List.of(4, 3, 2)), 1),
                 Arguments.of(computerNumber, new BaseballNumber(List.of(3, 4, 5)), 0)
+        );
+    }
+
+    static Stream<Arguments> containsData() {
+        BaseballNumber computerNumber = new BaseballNumber(List.of(4, 2, 3));
+        return Stream.of(
+                Arguments.of(computerNumber, new BaseballNumber(List.of(4, 2, 3)), 3),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(1, 2, 3)), 2),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(4, 3, 2)), 3),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(3, 4, 5)), 2)
         );
     }
 }

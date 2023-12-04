@@ -43,6 +43,12 @@ public class BaseballNumber {
         return count;
     }
 
+    public int containsCount(BaseballNumber baseballNumber) {
+        return (int) numbers.stream()
+                .filter(number -> baseballNumber.numbers.contains(number))
+                .count();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
