@@ -5,7 +5,11 @@ import baseball.constant.Exception;
 import java.util.*;
 
 public class BaseballNumber {
+    private final int MIN = 1;
+    private final int MAX = 9;
+    private final int SIZE = 3;
     private final List<Integer> numbers;
+
 
     public BaseballNumber(List<Integer> numbers) {
         validateRange(numbers);
@@ -16,7 +20,7 @@ public class BaseballNumber {
 
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 1 || number > 9) {
+            if (number < MIN || number > MAX) {
                 throw new IllegalArgumentException(Exception.NUMBER_RANGE.getMessage());
             }
         }
@@ -30,14 +34,14 @@ public class BaseballNumber {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 3) {
+        if (numbers.size() != SIZE) {
             throw new IllegalArgumentException(Exception.NUMBER_SIZE.getMessage());
         }
     }
 
     public int matchCount(BaseballNumber baseballNumber) {
         int count = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SIZE; i++) {
             if (numbers.get(i).equals(baseballNumber.numbers.get(i))) {
                 count++;
             }
