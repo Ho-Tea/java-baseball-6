@@ -16,7 +16,7 @@ public class Computer {
     }
 
     public boolean lose(Map<GameHint, Integer> gameStatus){
-        return gameStatus.get(GameHint.STRIKE).equals(3);
+        return gameStatus.containsKey(GameHint.STRIKE) && gameStatus.get(GameHint.STRIKE) == 3;
     }
 
 }
