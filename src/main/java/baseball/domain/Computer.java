@@ -3,6 +3,7 @@ package baseball.domain;
 import java.util.Map;
 
 public class Computer {
+    private final int LOSE_CONDITION = 3;
     private final BaseballNumber baseballNumber;
 
     public Computer(BaseballNumber baseballNumber) {
@@ -16,7 +17,7 @@ public class Computer {
     }
 
     public boolean lose(Map<GameHint, Integer> gameStatus){
-        return gameStatus.containsKey(GameHint.STRIKE) && gameStatus.get(GameHint.STRIKE) == 3;
+        return gameStatus.containsKey(GameHint.STRIKE) && gameStatus.get(GameHint.STRIKE) == LOSE_CONDITION;
     }
 
 }
