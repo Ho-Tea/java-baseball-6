@@ -21,4 +21,8 @@ public enum GameHint {
         }
         return new EnumMap<>(Map.of(BALL, ballCount, STRIKE, strikeCount));
     }
+
+    public String getKorean() {
+        return korean;
+    }
 }
