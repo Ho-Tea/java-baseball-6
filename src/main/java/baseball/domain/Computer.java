@@ -15,4 +15,8 @@ public class Computer {
         return GameHint.of(strikeCount, ballCount);
     }
 
+    public boolean lose(Map<GameHint, Integer> gameStatus){
+        return gameStatus.get(GameHint.STRIKE).equals(3);
+    }
+
 }

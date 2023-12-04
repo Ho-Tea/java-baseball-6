@@ -25,6 +25,14 @@ class ComputerTest {
         assertThat(new Computer(computerBaseballNum).compare(userBaseballNum)).isEqualTo(result);
     }
 
+    @Test
+    @DisplayName("플레이어가 컴퓨터의 수를 모두 맞추면 플레이어가 승리한다.")
+    void lose(){
+        assertAll(
+                () ->assertThat(new Computer(new BaseballNumber(List.of(1,2,3))).lose(new EnumMap<>(Map.of(GameHint.STRIKE, 3)))).isTrue(),
+                () ->assertThat(new Computer(new BaseballNumber(List.of(1,2,3))).lose(new EnumMap<>(Map.of(GameHint.STRIKE, 2)))).isFalse()
+        );
+    }
     static Stream<Arguments> compareData() {
         return Stream.of(
                 Arguments.of(new BaseballNumber(List.of(1,2,3)), new BaseballNumber(List.of(1,2,3)), new EnumMap<>(Map.of(GameHint.BALL, 0, GameHint.STRIKE, 3))),
