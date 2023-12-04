@@ -2,10 +2,10 @@ package baseball.domain;
 
 import java.util.*;
 
-public class GameNumber {
+public class BaseballNumber {
     private final List<Integer> numbers;
 
-    public GameNumber(List<Integer> numbers) {
+    public BaseballNumber(List<Integer> numbers) {
         validateRange(numbers);
         validateDuplicate(numbers);
         validateSize(numbers);
@@ -37,7 +37,7 @@ public class GameNumber {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GameNumber that = (GameNumber) o;
+        BaseballNumber that = (BaseballNumber) o;
         return Objects.equals(numbers, that.numbers);
     }
 
