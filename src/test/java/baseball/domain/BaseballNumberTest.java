@@ -2,9 +2,13 @@ package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -49,5 +53,20 @@ class BaseballNumberTest {
     }
 
 
+    @ParameterizedTest
+    @MethodSource("matchData")
+    @DisplayName("다른 숫자와 비교해 같은 자리에 같은 수가 몇개 있는지 알 수 있다.")
+    void matchCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected){
+        assertThat(computerNumber.matchCount(userNumber)).isEqualTo(expected);
+    }
 
+    static Stream<Arguments> matchData() {
+        BaseballNumber computerNumber = new BaseballNumber(List.of(4, 2, 3));
+        return Stream.of(
+                Arguments.of(computerNumber, new BaseballNumber(List.of(4, 2, 3)), 3),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(1, 2, 3)), 2),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(4, 3, 2)), 1),
+                Arguments.of(computerNumber, new BaseballNumber(List.of(3, 4, 5)), 0)
+        );
+    }
 }

@@ -22,15 +22,25 @@ public class BaseballNumber {
 
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
-        if(distinctNumbers.size() != numbers.size()){
+        if (distinctNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("숫자는 서로 다른 수로 이루어져야 합니다.");
         }
     }
 
     private void validateSize(List<Integer> numbers) {
-        if(numbers.size() != 3){
+        if (numbers.size() != 3) {
             throw new IllegalArgumentException("숫자의 개수는 3개로 이루어져야 합니다.");
         }
+    }
+
+    public int matchCount(BaseballNumber baseballNumber) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (numbers.get(i).equals(baseballNumber.numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
