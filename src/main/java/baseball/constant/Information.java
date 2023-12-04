@@ -7,7 +7,7 @@ public enum Information {
     DECIDE_GAME("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     ;
 
-    private String message;
+    private final String message;
 
     Information(String message) {
         this.message = message;

@@ -8,15 +8,15 @@ public enum GameHint {
     BALL("볼"),
     NOTHING("낫싱");
 
-    private String korean;
+    private final String korean;
 
 
     GameHint(String korean) {
         this.korean = korean;
     }
 
-    public static Map<GameHint, Integer> of(int strikeCount, int ballCount){
-        if(strikeCount == 0 && ballCount == 0){
+    public static Map<GameHint, Integer> of(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
             return new EnumMap<>(Map.of(NOTHING, 0));
         }
         return new EnumMap<>(Map.of(BALL, ballCount, STRIKE, strikeCount));

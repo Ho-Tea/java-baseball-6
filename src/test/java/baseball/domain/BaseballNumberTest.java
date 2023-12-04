@@ -45,9 +45,9 @@ class BaseballNumberTest {
     @Test
     @DisplayName("방어적 복사를 사용할 시 내부의 값을 변경할 수 없다.")
     void defensiveCopy() {
-        List<Integer> original = Arrays.asList(1,2,3);
+        List<Integer> original = Arrays.asList(1, 2, 3);
         BaseballNumber baseballNumber = new BaseballNumber(original);
-        BaseballNumber target = new BaseballNumber(List.of(1,2,4));
+        BaseballNumber target = new BaseballNumber(List.of(1, 2, 4));
         original.set(2, 4);
         assertThat(baseballNumber.equals(target)).isFalse();
     }
@@ -56,14 +56,14 @@ class BaseballNumberTest {
     @ParameterizedTest
     @MethodSource("matchData")
     @DisplayName("다른 숫자와 비교해 같은 자리에 같은 수가 몇개 있는지 알 수 있다.")
-    void matchCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected){
+    void matchCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected) {
         assertThat(computerNumber.matchCount(userNumber)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @MethodSource("containsData")
     @DisplayName("다른 숫자와 비교해 같은 수가 몇개 있는지 알 수 있다.")
-    void containsCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected){
+    void containsCount(BaseballNumber computerNumber, BaseballNumber userNumber, int expected) {
         assertThat(computerNumber.containsCount(userNumber)).isEqualTo(expected);
     }
 

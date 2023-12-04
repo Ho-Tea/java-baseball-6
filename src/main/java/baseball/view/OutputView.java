@@ -7,16 +7,17 @@ import java.util.Map;
 
 public class OutputView {
     private final static String DELIMITER = " ";
-    public void printBegin(){
+
+    public void printBegin() {
         System.out.println(Information.BEGIN_GAME.getMessage());
     }
 
-    public void printEnd(){
+    public void printEnd() {
         System.out.println(Information.END_GAME.getMessage());
     }
 
-    public void printStatus(Map<GameHint, Integer> gameStatus){
-        if(gameStatus.containsKey(GameHint.NOTHING)){
+    public void printStatus(Map<GameHint, Integer> gameStatus) {
+        if (gameStatus.containsKey(GameHint.NOTHING)) {
             System.out.println(GameHint.NOTHING.getKorean());
             return;
         }

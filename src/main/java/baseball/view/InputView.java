@@ -44,6 +44,7 @@ public class InputView {
             throw new IllegalArgumentException(Exception.NUMERIC.getMessage());
         }
     }
+
     private void validateSingleLetter(String input) {
         if (input.length() != 1) {
             throw new IllegalArgumentException(Exception.SINGLE_LETTER.getMessage());

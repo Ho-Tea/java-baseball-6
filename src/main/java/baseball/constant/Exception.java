@@ -11,7 +11,7 @@ public enum Exception {
     ;
 
 
-    private String message;
+    private final String message;
 
     Exception(String message) {
         this.message = message;

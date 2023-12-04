@@ -24,10 +24,10 @@ public class Game {
 
     }
 
-    private void play(Computer computer){
+    private void play(Computer computer) {
         Map<GameHint, Integer> gameStatus = computer.compare(new BaseballNumber(inputView.inputNumbers()));
         outputView.printStatus(gameStatus);
-        if(!computer.lose(gameStatus)){
+        if (!computer.lose(gameStatus)) {
             play(computer);
         }
     }

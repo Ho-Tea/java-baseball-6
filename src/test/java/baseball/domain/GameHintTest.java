@@ -1,25 +1,22 @@
 package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
 class GameHintTest {
 
     @ParameterizedTest
     @MethodSource("countData")
     @DisplayName("스트라이크와 볼의 개수로 게임 결과를 판단할 수 있다.")
-    void of(int strikeCount, int ballCount, Map<GameHint, Integer> result){
+    void of(int strikeCount, int ballCount, Map<GameHint, Integer> result) {
         assertThat(GameHint.of(strikeCount, ballCount)).isEqualTo(result);
     }
 
