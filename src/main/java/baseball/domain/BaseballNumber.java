@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.Exception;
+
 import java.util.*;
 
 public class BaseballNumber {
@@ -15,7 +17,7 @@ public class BaseballNumber {
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 9) {
-                throw new IllegalArgumentException("숫자는 1에서 9까지의 수로 이루어져야 합니다.");
+                throw new IllegalArgumentException(Exception.NUMBER_RANGE.getMessage());
             }
         }
     }
@@ -23,13 +25,13 @@ public class BaseballNumber {
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if (distinctNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException("숫자는 서로 다른 수로 이루어져야 합니다.");
+            throw new IllegalArgumentException(Exception.NUMBER_DUPLICATE.getMessage());
         }
     }
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 3) {
-            throw new IllegalArgumentException("숫자의 개수는 3개로 이루어져야 합니다.");
+            throw new IllegalArgumentException(Exception.NUMBER_SIZE.getMessage());
         }
     }
 

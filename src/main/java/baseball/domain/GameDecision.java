@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.constant.Exception;
+
 import java.util.Arrays;
 
 public enum GameDecision {
@@ -16,7 +18,7 @@ public enum GameDecision {
         return Arrays.stream(GameDecision.values())
                 .filter(status -> status.decisionNumber == number)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("재시작/종료에 해당하는 숫자가 아닙니다."));
+                .orElseThrow(() -> new IllegalArgumentException(Exception.DECIDE_NUMBER.getMessage()));
     }
 
 }
