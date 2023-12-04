@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constant.Information;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class InputView {
     private static final String SEPARATOR = "";
 
     public List<Integer> inputNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(Information.NUMBERS.getMessage());
         String numbers = Console.readLine();
         validateNullAndEmpty(numbers);
         validateNumeric(numbers);
@@ -23,7 +24,7 @@ public class InputView {
     }
 
     public int inputDecideNumber() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Information.DECIDE_GAME.getMessage());
         String decisionNumber = Console.readLine();
         validateNullAndEmpty(decisionNumber);
         validateNumeric(decisionNumber);
